@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Fan Data Exfiltration Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-fan"></i> CPU Fan Data Exfiltration Detection</h1>
+            <p>Detect covert data transmission through fan speed modulation</p>
+        </header>
+
+        <div class="content">
+            <div class="info-section">
+                <h2>About This Project</h2>
+                <p>This system analyzes videos of CPU fans to detect potential data exfiltration through subtle fan speed variations. Malicious software can modulate fan speeds to encode binary data, which can be captured by cameras and analyzed to reconstruct transmitted information.</p>
+                
+                <div class="process-flow">
+                    <h3>How It Works</h3>
+                    <div class="flow-steps">
+                        <div class="step">
+                            <div class="step-icon">1</div>
+                            <p>Malware modulates fan speed via PWM</p>
+                        </div>
+                        <div class="step-arrow">→</div>
+                        <div class="step">
+                            <div class="step-icon">2</div>
+                            <p>Camera captures RPM variations</p>
+                        </div>
+                        <div class="step-arrow">→</div>
+                        <div class="step">
+                            <div class="step-icon">3</div>
+                            <p>System analyzes brightness patterns</p>
+                        </div>
+                        <div class="step-arrow">→</div>
+                        <div class="step">
+                            <div class="step-icon">4</div>
+                            <p>Data is extracted and decoded</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <h2>Analyze a Fan Video</h2>
+                <div class="upload-box" id="uploadBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop a video file here or click to browse</p>
+                    <input type="file" id="videoFile" accept="video/*" hidden>
+                    <button class="browse-btn" onclick="document.getElementById('videoFile').click()">Browse Files</button>
+                </div>
+                <div class="requirements">
+                    <h4>Video Requirements:</h4>
+                    <ul>
+                        <li>Clear view of the fan blades</li>
+                        <li>Stable camera position</li>
+                        <li>Well-lit environment</li>
+                        <li>Minimum 5 seconds duration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Analysis Results</h2>
+                <div class="results-container">
+                    <div class="result-card">
+                        <h3>Extracted Message</h3>
+                        <div class="message-box" id="messageBox"></div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Technical Details</h3>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="label">Average RPM:</span>
+                                <span class="value" id="avgRpm"></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Binary Data:</span>
+                                <span class="value" id="bitstream"></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Analysis Method:</span>
+                                <span class="value">FFT-based Frequency Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="visualization">
+                    <h3>Analysis Visualizations</h3>
+                    <div class="graph-container">
+                        <img id="analysisGraph" src="" alt="Analysis Graph">
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button id="downloadReport" class="action-btn">
+                        <i class="fas fa-download"></i> Download Full Report
+                    </button>
+                    <button id="analyzeAnother" class="action-btn secondary">
+                        <i class="fas fa-redo"></i> Analyze Another Video
+                    </button>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Processing video... This may take a few moments</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Data Exfiltration Detection Project | Presented by Gauri Kumar, Ritunjay Bhatt, Ansh Chauhan, Divyansh Pal, Sarthak Kumar Gupta</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
