@@ -1,0 +1,23 @@
+# Ignore virtual environment
+venv/
+
+# Ignore uploads (user data)
+uploads/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and reports
+*.log
+*.txt
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db

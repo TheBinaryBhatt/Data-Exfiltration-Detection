@@ -34,13 +34,18 @@ Attackers can modulate CPU fan speeds (using PWM) to encode binary data (`0` and
 ## 📂 Project Structure
 fan-exfiltration-detection/
 ├── app.py # Main Flask app
+├── ml_model/ # ML model scripts
+│ └── ml_model.py
 ├── uploads/ # Uploaded videos + results
 ├── templates/
 │ └── index.html # Web interface
 ├── static/
 │ ├── css/style.css # Styles
 │ └── js/script.js # Frontend logic
-└── requirements.txt # Dependencies
+├── requirements.txt # Dependencies
+├── Dockerfile # Docker setup
+├── docker-compose.yml # Docker config
+└── Readme.md # Documentation
 
 yaml
 Copy code
@@ -49,10 +54,17 @@ Copy code
 
 ## ⚡ Quick Start
 
-1. Clone this repository (after you push it to GitHub)  
+1. Clone this repository  
    ```bash
-   git clone https://github.com/your-username/fan-exfiltration-detection.git
-   cd fan-exfiltration-detection
+   git clone https://github.com/your-username/data-exfiltration-detection.git
+   cd data-exfiltration-detection
+Create and activate a virtual environment
+
+bash
+Copy code
+python -m venv venv
+venv\Scripts\activate   # On Windows
+source venv/bin/activate # On Mac/Linux
 Install dependencies
 
 bash
@@ -101,4 +113,20 @@ Export reports as PDF with charts
 
 Deployment on free cloud platforms (Render/Heroku)
 
-⭐ If you find this project interesting, don’t forget to give it a star when it’s live on GitHub!
+⭐ If you find this project interesting, don’t forget to star it on GitHub!
+
+yaml
+Copy code
+
+---
+
+# 🔹 4. Push Changes to GitHub
+Once `.gitignore` and `README.md` are ready:
+
+```powershell
+git init
+git add .
+git commit -m "Setup project with virtual environment, gitignore, and updated README"
+git branch -M main
+git remote add origin https://github.com/your-username/data-exfiltration-detection.git
+git push -u origin main

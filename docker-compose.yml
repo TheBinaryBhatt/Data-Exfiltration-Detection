@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  fan-analysis:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - FLASK_ENV=production
+      - SECRET_KEY=your-production-secret-key-change-this
